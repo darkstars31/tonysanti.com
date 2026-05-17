@@ -1,0 +1,447 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+:root {
+	color-scheme: dark;
+	--bg: #0d1316;
+	--bg-accent: #173038;
+	--text: #dbe8de;
+	--muted: #94a99b;
+	--card: #111b20;
+	--line: #2b4041;
+	--primary: #4ecf96;
+	--primary-ink: #052013;
+	--highlight: #f7a24d;
+	--body-glow: #154655;
+	--body-glow-2: #27213c;
+	--header-bg: color-mix(in srgb, var(--bg) 78%, black);
+}
+
+:root[data-theme='light'] {
+	color-scheme: light;
+	--bg: #f5f7f4;
+	--bg-accent: #dce9dc;
+	--text: #172019;
+	--muted: #4e5a4d;
+	--card: #fbfcf8;
+	--line: #b9c8b7;
+	--primary: #1f6b45;
+	--primary-ink: #e9f7ef;
+	--highlight: #d97632;
+	--body-glow: #dce9dc;
+	--body-glow-2: #f0dfcf;
+	--header-bg: color-mix(in srgb, var(--bg) 88%, white);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Manrope', sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at 15% 10%, var(--body-glow) 0, transparent 40%),
+		radial-gradient(circle at 85% 0%, var(--body-glow-2) 0, transparent 34%),
+		var(--bg);
+	line-height: 1.6;
+}
+
+.site-shell {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.site-header {
+	position: sticky;
+	top: 0;
+	padding: 1rem 1.5rem;
+	backdrop-filter: blur(6px);
+	background: var(--header-bg);
+	border-bottom: 1px solid var(--line);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	z-index: 10;
+}
+
+.brand {
+	font-family: 'IBM Plex Mono', monospace;
+	font-weight: 600;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--text);
+	text-decoration: none;
+}
+
+.header-actions {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.site-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 0.8rem;
+}
+
+.site-nav a {
+	color: var(--text);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 0.95rem;
+	padding: 0.25rem 0.35rem;
+	border-radius: 0.25rem;
+}
+
+.site-nav a:hover {
+	color: var(--primary);
+	background: color-mix(in srgb, var(--bg-accent) 38%, var(--card));
+}
+
+.theme-toggle {
+	width: 2.2rem;
+	height: 2.2rem;
+	padding: 0;
+	border-radius: 999px;
+	border: 1px solid var(--line);
+	background: var(--card);
+	color: var(--text);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.theme-toggle:hover {
+	border-color: var(--highlight);
+}
+
+.theme-toggle :global(svg) {
+	display: block;
+}
+
+.page-content {
+	width: min(1000px, calc(100% - 3rem));
+	margin: 0 auto;
+	padding: 3rem 0 4rem;
+	flex: 1;
+}
+
+.hero {
+	padding: 1.5rem 0;
+}
+
+.eyebrow {
+	font-family: 'IBM Plex Mono', monospace;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	font-size: 0.8rem;
+	color: var(--muted);
+	margin: 0 0 0.8rem;
+}
+
+h1 {
+	font-size: clamp(2rem, 6vw, 3.8rem);
+	line-height: 1.08;
+	margin: 0 0 1rem;
+	max-width: 16ch;
+}
+
+h2 {
+	font-size: clamp(1.25rem, 3.2vw, 1.85rem);
+	margin: 2rem 0 0.5rem;
+}
+
+.lead {
+	max-width: 62ch;
+	font-size: 1rem;
+	color: var(--muted);
+	margin-bottom: 1.8rem;
+}
+
+.cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.8rem;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.7rem 1rem;
+	border-radius: 0.6rem;
+	background: var(--primary);
+	color: var(--primary-ink);
+	text-decoration: none;
+	font-weight: 700;
+	border: 1px solid transparent;
+}
+
+.button-ghost {
+	background: transparent;
+	color: var(--text);
+	border-color: var(--line);
+}
+
+.content-page p {
+	max-width: 72ch;
+	font-size: 0.95rem;
+}
+
+.content-page ul {
+	padding-left: 1.2rem;
+}
+
+.link-grid {
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	gap: 0.8rem;
+}
+
+.tile-link {
+	display: block;
+	padding: 1rem;
+	border-radius: 0.75rem;
+	border: 1px solid var(--line);
+	background: var(--card);
+	text-decoration: none;
+	color: inherit;
+}
+
+.tile-link strong {
+	display: block;
+	font-size: 1rem;
+	margin-bottom: 0.3rem;
+}
+
+.tile-link span {
+	color: var(--muted);
+	font-size: 0.88rem;
+}
+
+.tile-link:hover {
+	transform: translateY(-2px);
+	transition: transform 130ms ease;
+	border-color: var(--highlight);
+}
+
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 0.9rem;
+	margin-top: 1.1rem;
+}
+
+.project-card {
+	padding: 1rem;
+	border: 1px solid var(--line);
+	border-radius: 0.75rem;
+	background: var(--card);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h2 {
+	margin-top: 0.2rem;
+	font-size: 1.2rem;
+}
+
+.project-card p {
+	font-size: 0.93rem;
+}
+
+.stack {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.8rem;
+	color: var(--muted);
+	margin-top: 0.9rem;
+}
+
+.project-note {
+	margin-top: 1rem;
+}
+
+.project-note a {
+	color: var(--primary);
+	font-weight: 700;
+}
+
+.site-footer {
+	padding: 1.2rem 1.5rem 1.8rem;
+	text-align: center;
+	color: var(--muted);
+	font-size: 0.92rem;
+}
+
+.site-footer p {
+	margin: 0;
+}
+
+.footer-legal {
+	margin-top: 0.4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.55rem;
+	font-size: 0.82rem;
+}
+
+.site-footer a {
+	color: var(--text);
+	font-weight: 600;
+}
+
+.resume-page {
+	line-height: 1.8;
+}
+
+.resume-header {
+	margin-bottom: 1.8rem;
+}
+
+.resume-name {
+	font-size: 1.2rem;
+	font-weight: 800;
+	margin-bottom: 0.3rem;
+}
+
+.resume-contact {
+	line-height: 1.9;
+	color: var(--muted);
+}
+
+.resume-contact a {
+	color: var(--text);
+	font-weight: 600;
+}
+
+.resume-summary {
+	margin-top: 0.8rem;
+	max-width: 78ch;
+	line-height: 1.85;
+	font-size: 0.95rem;
+	color: var(--muted);
+}
+
+.resume-section-title {
+	margin-top: 2.3rem;
+	margin-bottom: 0.85rem;
+}
+
+.resume-entry {
+	margin-bottom: 1rem;
+	padding: 1.2rem;
+}
+
+.resume-meta {
+	margin-top: 0.2rem;
+	margin-bottom: 0.85rem;
+	color: var(--muted);
+	line-height: 1.75;
+}
+
+.resume-entry ul {
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	padding-left: 1.35rem;
+	line-height: 1.85;
+}
+
+.resume-entry li {
+	font-size: 0.92rem;
+	margin-bottom: 0.45rem;
+}
+
+.resume-skills {
+	font-size: 0.9rem;
+	line-height: 2;
+	margin-top: 0.55rem;
+}
+
+.resume-skill-groups {
+	margin-top: 0.55rem;
+	padding: 1rem 1.1rem;
+	border: 1px solid var(--line);
+	border-radius: 0.75rem;
+	background: var(--card);
+}
+
+.resume-skill-line {
+	margin: 0 0 0.5rem;
+	font-size: 0.92rem;
+	line-height: 1.75;
+}
+
+.resume-skill-line:last-child {
+	margin-bottom: 0;
+}
+
+.resume-links {
+	margin-top: 1.4rem;
+}
+
+.case-study-page h2 {
+	margin-top: 0.5rem;
+}
+
+.case-study-page h3 {
+	margin-top: 1.2rem;
+	margin-bottom: 0.35rem;
+	font-size: 1.02rem;
+	letter-spacing: 0.01em;
+}
+
+.case-study-card {
+	padding: 1.25rem;
+	line-height: 1.75;
+}
+
+.case-study-diagram {
+	margin-top: 0.4rem;
+	border: 1px dashed var(--line);
+	border-radius: 0.7rem;
+	padding: 0.8rem 0.9rem;
+	background: color-mix(in srgb, var(--card) 90%, var(--bg-accent));
+}
+
+.case-study-diagram p {
+	margin: 0.1rem 0;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.84rem;
+	color: var(--muted);
+}
+
+@media (max-width: 700px) {
+	.site-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.header-actions {
+		justify-content: flex-start;
+	}
+
+	.page-content {
+		width: min(1000px, calc(100% - 2rem));
+		padding-top: 1.8rem;
+	}
+
+	h1 {
+		max-width: none;
+	}
+}

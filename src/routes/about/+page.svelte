@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { resolve } from '$app/paths';
+</script>
+
 <section class="content-page">
 	<h1>About Me</h1>
 	<p>
@@ -41,7 +45,7 @@
 
 	<h2>Quick Links</h2>
 	<div class="link-grid">
-		<a class="tile-link" href="/projects">
+		<a class="tile-link" href={resolve('/projects')}>
 			<strong>Projects</strong>
 			<span>Explore project highlights and technical work.</span>
 		</a>
@@ -49,7 +53,7 @@
 			<strong>GitHub</strong>
 			<span>github.com/darkstars31</span>
 		</a>
-		<a class="tile-link" href="/resume">
+		<a class="tile-link" href={resolve('/resume')}>
 			<strong>Resume</strong>
 			<span>Open my current resume and background summary.</span>
 		</a>

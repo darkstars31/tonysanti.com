@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { resolve } from '$app/paths';
+</script>
+
 <section class="content-page resume-page">
 	<h1>Resume</h1>
 
@@ -196,7 +200,7 @@
 	</div>
 
 	<div class="link-grid resume-links">
-		<a class="tile-link" href="/projects">
+		<a class="tile-link" href={resolve('/projects')}>
 			<strong>Passion Projects</strong>
 			<span>See the project portfolio and technical experiments.</span>
 		</a>

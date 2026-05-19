@@ -21,9 +21,10 @@
 		<li>Led onshore and offshore engineers as a Team Lead at NBH Bank (2Unifi)</li>
         <li>Automated Testing, taking manual account onboarding from 6 minutes down to 45 seconds</li>
 		<li>Reduced Azure DevOps pipeline run times by 50% through build parallelization</li>
+		<li>Optimized React based application, managing 350,000 heavy equipment assets</li>
 		<li>Helped deliver a payment processor integration that saved $12M per year</li>
 		<li>Built and scaled products using React, React Native, NestJS, FastAPI, and cloud services</li>
-        <li>Transitioned 300k user accounts from internal auth to Okta's B2C platform with zero downtime</li>
+        <li>Transitioned 300,000 user accounts from internal auth to Okta's B2C platform with zero downtime</li>
 		<li>Designed and launched the first B2C web app at Veterans United Home Loans</li>
 	</ul>
 
@@ -36,34 +37,10 @@
 		<li>People-first engineering: mentoring, pairing, and team advocacy</li>
 	</ul>
 
-	<h2>Beyond Work</h2>
+	<h2>Going Beyond Work</h2>
 	<p>
 		Outside of software, I spend time with family, play disc golf, work on home DIY and woodworking
 		projects, and enjoy games of all kinds. I also run passion projects and experiments that help me
 		stay curious and continuously improve.
 	</p>
-
-	<h2>Quick Links</h2>
-	<div class="link-grid">
-		<a class="tile-link" href={resolve('/projects')}>
-			<strong>Projects</strong>
-			<span>Explore project highlights and technical work.</span>
-		</a>
-		<a class="tile-link" href="https://github.com/darkstars31" target="_blank" rel="noreferrer">
-			<strong>GitHub</strong>
-			<span>github.com/darkstars31</span>
-		</a>
-		<a class="tile-link" href={resolve('/resume')}>
-			<strong>Resume</strong>
-			<span>Open my current resume and background summary.</span>
-		</a>
-		<a class="tile-link" href="https://www.linkedin.com/in/anthony-santi/" target="_blank" rel="noreferrer">
-			<strong>LinkedIn</strong>
-			<span>Connect with me professionally.</span>
-		</a>
-		<a class="tile-link" href="mailto:TonyMSanti@gmail.com">
-			<strong>Email</strong>
-			<span>TonyMSanti@gmail.com</span>
-		</a>
-	</div>
 </section>

@@ -1,6 +1,6 @@
 <section class="content-page case-study-page">
-	<h1>Case Studies</h1>
-	<p class="lead">Deep dives into architecture, product decisions, and measurable outcomes.</p>
+	<h1>Deep Dives</h1>
+	<p class="lead">Case studies into architecture, product decisions, and measurable outcomes.</p>
 
 	<article class="project-card case-study-card">
 		<p class="eyebrow">Case Study 01</p>

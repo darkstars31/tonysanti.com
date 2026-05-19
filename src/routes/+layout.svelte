@@ -3,13 +3,47 @@
 	import { resolve } from '$app/paths';
 	import { Moon, Sun } from '@lucide/svelte';
 	import './layout.css';
+	import faceProfile from '$lib/assets/faceprofile.png';
 	import favicon from '$lib/assets/favicon.svg';
 
 	type Theme = 'light' | 'dark';
+	type NavPath = '/about' | '/works' | '/resume';
+	type InternalNavItem = {
+		label: string;
+		path: NavPath;
+		external?: false;
+	};
+	type ExternalNavItem = {
+		label: string;
+		href: string;
+		external: true;
+		target?: '_blank';
+		rel?: string;
+	};
+	type NavItem = InternalNavItem | ExternalNavItem;
 
 	let { children } = $props();
 	let theme = $state<Theme>('dark');
 	const currentYear = new Date().getFullYear();
+	const navItems: NavItem[] = [
+		{ label: 'ABOUT', path: '/about' },
+		{ label: 'WORKS', path: '/works' },
+		{ label: 'RÉSUMÉ', path: '/resume' },
+		{
+			label: 'GITHUB',
+			href: 'https://github.com/darkstars31',
+			external: true,
+			target: '_blank',
+			rel: 'noreferrer'
+		},
+		{
+			label: 'LINKEDIN',
+			href: 'https://www.linkedin.com/in/anthony-santi/',
+			external: true,
+			target: '_blank',
+			rel: 'noreferrer'
+		}
+	];
 
 	const applyTheme = (nextTheme: Theme) => {
 		theme = nextTheme;
@@ -67,15 +101,28 @@
 
 <div class="site-shell">
 	<header class="site-header">
-		<a class="brand" href={resolve('/')}>Anthony Santi</a>
+		<a class="brand" href={resolve('/')}>
+			<img class="brand-avatar" src={faceProfile} alt="Anthony Santi profile" />
+			<span>Anthony Santi</span>
+		</a>
 		<div class="header-actions">
 			<nav aria-label="Primary" class="site-nav">
-				<a href={resolve('/about')}>About</a>
-				<a href={resolve('/projects')}>Projects</a>
-				<a href={resolve('/case-studies')}>Case Studies</a>
-				<a href={resolve('/resume')}>Resume</a>
-				<a href="https://github.com/darkstars31" target="_blank" rel="noreferrer">GitHub</a>
-				<a href="https://www.linkedin.com/in/anthony-santi/" target="_blank" rel="noreferrer">LinkedIn</a>
+				{#each navItems as item, index (item.label)}
+					{#if item.external}
+						<a
+							href={item.href}
+							target={item.target}
+							rel={item.rel}
+							style={`--nav-enter-delay: ${index * 300}ms`}
+						>
+							{item.label}
+						</a>
+					{:else}
+						<a href={resolve(item.path)} style={`--nav-enter-delay: ${index * 300}ms`}>
+							{item.label}
+						</a>
+					{/if}
+				{/each}
 			</nav>
 			<button
 				class="theme-toggle"
@@ -100,7 +147,7 @@
 	<footer class="site-footer">
 		<p>Enhancing lives every day through thoughtful software.</p>
 		<p class="footer-legal">
-			<span>&copy; {currentYear} Anthony Michael Santi.</span>
+			<span>&copy; {currentYear} Anthony M Santi.</span>
 			<a href={resolve('/privacy-policy')}>Privacy Policy</a>
 		</p>
 	</footer>

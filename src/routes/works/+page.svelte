@@ -2,6 +2,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import proxmoxImage from '$lib/assets/proxmox_logo.png';
 
+	const t3FleetImage = new URL('../../lib/assets/t3fleetmanagement.avif', import.meta.url).href;
+	const myVUImage = new URL('../../lib/assets/myvu-phone-overview.png', import.meta.url).href;
 	const analytikillImage = new URL('../../lib/assets/analytikill.PNG', import.meta.url).href;
 	const scoreboardImage = new URL('../../lib/assets/scoreboard.PNG', import.meta.url).href;
 	const weddingImage = new URL('../../lib/assets/wedding.PNG', import.meta.url).href;
@@ -17,9 +19,36 @@
 
 	const projects: Project[] = [
 		{
+			title: 'T3: Fleet Management',
+			description:
+				'',
+			stack: 'React • TypeScript • React Query • Google Maps • Python • PostgreSQL • Gitlab CI/CD',
+			link: 'https://t3.tech/solutions/fleet-management',
+			image: t3FleetImage,
+			imageAlt: 'T3: Fleet Management platform dashboard screenshot'
+		},
+		{
+			title: 'MyVeteransUnited',
+			description:
+				'',
+			stack: 'Angular • TypeScript • C# • PHP • MSSQL • TeamFoundation Server',
+			link: 'https://my.veteransunited.com/login',
+			image: myVUImage,
+			imageAlt: 'MyVeteransUnited Loan platform dashboard screenshot'
+		},
+		{
+			title: '2Unifi',
+			description:
+				'',
+			stack: 'React • React Native • TypeScript • NestJS • TypeORM • MSSQL/CosmosDB • Bitbucket • Azure DevOps CI/CD',
+			link: 'https://my.veteransunited.com/login',
+			image: myVUImage,
+			imageAlt: 'MyVeteransUnited Loan platform dashboard screenshot'
+		},
+		{
 			title: 'AnalytiKill',
 			description:
-				'Founded and built a community analytics platform supporting a free draft esports league with 22 franchises and 80+ teams.',
+				'Founded and built a community analytics platform supporting a free draft esports league with 750+ active members, 22 franchises and 80+ teams.',
 			stack: 'React • TypeScript • React Query • eCharts • Express • Prisma • PostgreSQL • GitHub Actions',
 			link: 'https://analytikill.com',
 			image: analytikillImage,
@@ -50,12 +79,6 @@
 			stack: 'Proxmox • Docker • Linux • nginx • DigitalOcean • PostgreSQL',
 			image: proxmoxImage,
 			imageAlt: 'Proxmox logo for homelab infrastructure'
-		},
-		{
-			title: 'Gratitude Taco Bot',
-			description:
-				'Built Slack and Discord bot variants that encourage team recognition through daily limited taco reactions and social feedback loops in remote communities.',
-			stack: 'Node.js • Slack API • Discord API • Community Automation'
 		},
 		{
 			title: 'Games and Digital Art Experiments',
@@ -130,14 +153,6 @@
 </script>
 
 <section class="content-page projects-page">
-	<header class="projects-header">
-		<h1>Projects</h1>
-		<p>
-			Vertical carousel of work focused on analytics, community tooling, and practical
-			full-stack engineering.
-		</p>
-	</header>
-
 	<div class="vertical-carousel" aria-label="Projects vertical carousel">
 		{#each projects as project, index (project.title)}
 			<article class="project-slide" aria-label={`Project ${index + 1}: ${project.title}`}>
@@ -254,8 +269,8 @@
 	}
 
 	.slide-media img {
-		object-fit: cover;
-		max-height: clamp(260px, 45vh, 420px);
+		object-fit: scale-down;
+		max-height: clamp(760px, 45vh, 420px);
 	}
 
 	.media-placeholder {

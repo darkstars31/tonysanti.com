@@ -67,9 +67,14 @@
 
 	const projectRainbowHues = [0, 32, 58, 120, 220, 275];
 	let observer: IntersectionObserver | null = null;
+	const canUseDOM = typeof document !== 'undefined';
 
 
 	const setProjectHue = (index: number) => {
+		if (!canUseDOM) {
+			return;
+		}
+
 		if (index === 0) {
 			// Remove tint for the first project (default background)
 			delete document.documentElement.dataset.projectRainbow;
@@ -122,6 +127,10 @@
 	});
 
 	onDestroy(() => {
+		if (!canUseDOM) {
+			return;
+		}
+
 		observer?.disconnect();
 		delete document.documentElement.dataset.projectSnap;
 		delete document.documentElement.dataset.projectRainbow;

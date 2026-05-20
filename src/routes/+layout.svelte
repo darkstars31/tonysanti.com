@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
-	import { Moon, Sun } from '@lucide/svelte';
+	import Moon from '@lucide/svelte/icons/moon';
+	import Sun from '@lucide/svelte/icons/sun';
 	import './layout.css';
 	import faceProfile from '$lib/assets/faceprofile.png';
 	import favicon from '$lib/assets/favicon.svg';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import faceProfile from '$lib/assets/faceprofile.png';
+	import sandchair from '$lib/assets/tonysandchair.png';
 </script>
 
 <section class="hero">
@@ -24,6 +24,6 @@
 	</div>
 
 	<div class="hero-image-wrap">
-		<img class="hero-image" src={faceProfile} alt="Portrait of Anthony Santi" />
+		<img class="hero-image" src={sandchair} alt="Portrait of Anthony Santi" />
 	</div>
 </section>

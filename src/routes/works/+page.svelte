@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import proxmoxImage from '$lib/assets/proxmox_logo.png';
-
-	const t3FleetImage = new URL('../../lib/assets/t3fleetmanagement.avif', import.meta.url).href;
-	const myVUImage = new URL('../../lib/assets/myvu-phone-overview.png', import.meta.url).href;
-	const twoUnifiImage = new URL('../../lib/assets/2unifi.PNG', import.meta.url).href;
-	const analytikillImage = new URL('../../lib/assets/analytikill.PNG', import.meta.url).href;
-	const scoreboardImage = new URL('../../lib/assets/scoreboard.PNG', import.meta.url).href;
-	const weddingImage = new URL('../../lib/assets/wedding.PNG', import.meta.url).href;
-	const experimentsImage = new URL('../../lib/assets/games.png', import.meta.url).href;
+	import proxmoxImage from '$lib/assets/proxmox_logo.png?url';
+	import t3FleetImage from '$lib/assets/t3fleetmanagement.avif?url';
+	import myVUImage from '$lib/assets/myvu-phone-overview.png?url';
+	import twoUnifiImage from '$lib/assets/2unifi.PNG?url';
+	import analytikillImage from '$lib/assets/analytikill.PNG?url';
+	import scoreboardImage from '$lib/assets/scoreboard.PNG?url';
+	import weddingImage from '$lib/assets/wedding.PNG?url';
+	import experimentsImage from '$lib/assets/games.png?url';
 
 	type Project = {
 		title: string;

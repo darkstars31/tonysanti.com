@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
-	import proxmoxImage from '$lib/assets/proxmox_logo.png';
-
-	const analytikillImage = new URL('../../lib/assets/analytikill.PNG', import.meta.url).href;
-	const scoreboardImage = new URL('../../lib/assets/scoreboard.PNG', import.meta.url).href;
-	const weddingImage = new URL('../../lib/assets/wedding.PNG', import.meta.url).href;
+	import proxmoxImage from '$lib/assets/proxmox_logo.png?url';
+	import analytikillImage from '$lib/assets/analytikill.PNG?url';
+	import scoreboardImage from '$lib/assets/scoreboard.PNG?url';
+	import weddingImage from '$lib/assets/wedding.PNG?url';
 
 	type Project = {
 		title: string;

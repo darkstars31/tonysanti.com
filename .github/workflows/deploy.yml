@@ -32,21 +32,28 @@ jobs:
         run: npm ci
 
       - name: Set BASE_PATH
-        run: |
-          if [ "${{ github.event.repository.name }}" = "${{ github.repository_owner }}.github.io" ]; then
-            echo "BASE_PATH=" >> $GITHUB_ENV
-          else
-            echo "BASE_PATH=/${{ github.event.repository.name }}" >> $GITHUB_ENV
-          fi
+        run: echo "BASE_PATH=" >> $GITHUB_ENV
 
       - name: Build
         run: npm run build
+
+      - name: Ensure deploy directory permissions
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.DEPLOY_SSH_HOST }}
+          username: ${{ secrets.DEPLOY_SSH_USER }}
+          key: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            set -e
+            sudo mkdir -p /var/www/tonysanti.com/html/
+            sudo chown -R ${{ secrets.DEPLOY_SSH_USER }}:${{ secrets.DEPLOY_SSH_USER }} /var/www/tonysanti.com/html/
 
 
       - name: Copy build folder to server via rsync
         uses: burnett01/rsync-deployments@v8
         with:
-          switches: -avzr --delete
+          switches: -avzr --delay-updates --delete-delay
           path: build/
           remote_path: /var/www/tonysanti.com/html/
           remote_host: ${{ secrets.DEPLOY_SSH_HOST }}

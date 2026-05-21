@@ -330,11 +330,8 @@ body {
 }
 
 .hero-image {
-	width: min(100%, 340px);
+	width: min(100%, 640px);
 	height: auto;
-	border-radius: 1rem;
-	border: 1px solid var(--line);
-	box-shadow: 0 16px 40px color-mix(in srgb, black 35%, var(--body-glow));
 }
 
 .eyebrow {
@@ -651,6 +648,7 @@ h2 {
 	}
 
 	.hero-image {
+		object-fit: cover;
 		width: min(100%, 280px);
 	}
 }

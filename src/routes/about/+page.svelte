@@ -20,8 +20,8 @@
 	<ul>
 		<li>Led onshore and offshore engineers as a Team Lead at NBH Bank (2Unifi)</li>
         <li>Automated Testing, taking manual account onboarding from 6 minutes down to 45 seconds</li>
-		<li>Reduced Azure DevOps pipeline run times by 50% through build parallelization</li>
-		<li>Optimized React based application, managing 350,000 heavy equipment assets</li>
+		<li>Reduced Azure DevOps pipeline run times by 50% through build parallelization and caching</li>
+		<li>Optimized React to handle over 350,000 heavy equipment assets</li>
 		<li>Ideated and implemented a "white-glove" bulk onboarding process for clients with a large number of assets</li>
 		<li>Helped deliver a payment processor integration that saved $12M per year</li>
 		<li>Built and scaled products using React, React Native, NestJS, C#, FastAPI, and cloud services</li>
@@ -42,6 +42,6 @@
 	<p>
 		Outside of software, I spend time with family, play disc golf, work on home DIY and woodworking
 		projects, and enjoy games of all kinds. I also run passion projects and experiments that help me
-		stay curious and continuously improve.
+		stay curious and continuously improve - like this website being built in SvelteKit.
 	</p>
 </section>

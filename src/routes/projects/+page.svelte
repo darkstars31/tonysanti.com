@@ -137,168 +137,64 @@
 	});
 </script>
 
-<section class="content-page projects-page">
-	<header class="projects-header">
+<section class="content-page grid gap-4" style="--top-nav-offset: clamp(5.8rem, 9vw, 7.2rem)">
+	<header class="snap-start scroll-mt-(--top-nav-offset)">
 		<h1>Projects</h1>
-		<p>
+		<p class="max-w-[56ch]">
 			Vertical carousel of work focused on analytics, community tooling, and practical
 			full-stack engineering.
 		</p>
 	</header>
 
-	<div class="vertical-carousel" aria-label="Projects vertical carousel">
+	<div class="grid gap-14 pb-8 max-[820px]:gap-6" aria-label="Projects vertical carousel">
 		{#each projects as project, index (project.title)}
-			<article class="project-slide" aria-label={`Project ${index + 1}: ${project.title}`}>
-				<div class="slide-copy">
-					<p class="slide-index">{String(index + 1).padStart(2, '0')}</p>
-					<h2>{project.title}</h2>
-					<p>{project.description}</p>
+			<article
+				class="snap-start snap-always scroll-mt-(--top-nav-offset) grid min-h-[clamp(520px,calc(100vh-var(--top-nav-offset)-1.5rem),820px)] grid-cols-2 gap-[0.85rem] rounded-[0.8rem] bg-transparent p-[0.9rem] max-[820px]:min-h-auto max-[820px]:grid-cols-1"
+				aria-label={`Project ${index + 1}: ${project.title}`}
+			>
+				<div class="grid content-start gap-[0.6rem] p-[0.2rem]">
+					<p class="m-0 font-['IBM_Plex_Mono',monospace] text-[0.73rem] uppercase tracking-wider text-(--muted)">
+						{String(index + 1).padStart(2, '0')}
+					</p>
+					<h2 class="m-0 text-[clamp(1.4rem,3vw,2rem)]">{project.title}</h2>
+					<p class="m-0">{project.description}</p>
 					<p class="stack">{project.stack}</p>
 					{#if project.link}
-						<button type="button" class="button button-ghost" onclick={() => openProject(project.link!)}>
+						<button
+							type="button"
+							class="button button-ghost mt-[0.2rem] w-fit"
+							onclick={() => openProject(project.link!)}
+						>
 							Open Project
 						</button>
 					{/if}
 				</div>
 
-				<div class="slide-media" aria-hidden={project.image ? undefined : 'true'}>
+				<div class="flex min-h-full items-center" aria-hidden={project.image ? undefined : 'true'}>
 					{#if project.image}
-						<img src={project.image} alt={project.imageAlt ?? `${project.title} image`} />
+						<img
+							class="h-full min-h-60 w-full rounded-[0.7rem] object-cover max-h-[clamp(260px,45vh,420px)]"
+							src={project.image}
+							alt={project.imageAlt ?? `${project.title} image`}
+						/>
 					{:else}
-						<div class="media-placeholder">
-							<p class="placeholder-kicker">NO IMAGE</p>
-							<p>Visual coming soon</p>
+						<div class="grid h-full min-h-60 w-full content-center justify-items-center gap-[0.3rem] rounded-[0.7rem] border-none bg-[color-mix(in_srgb,var(--card)_88%,var(--bg-accent))] p-[0.9rem]">
+							<p class="m-0 font-['IBM_Plex_Mono',monospace] text-[0.72rem] uppercase tracking-[0.08em] text-(--muted)">
+								NO IMAGE
+							</p>
+							<p class="m-0 text-[0.85rem] text-(--muted)">Visual coming soon</p>
 						</div>
 					{/if}
 				</div>
 			</article>
 		{/each}
+		<div class="h-[calc(100vh-var(--top-nav-offset))] snap-start" aria-hidden="true"></div>
 	</div>
 
-	<p class="project-note">
+	<p class="project-note mt-4">
 		More code samples and active repositories are available on
-		<a href="https://github.com/darkstars31" target="_blank" rel="noreferrer">GitHub</a>.
+		<a class="font-bold text-(--primary)" href="https://github.com/darkstars31" target="_blank" rel="noreferrer">
+			GitHub
+		</a>.
 	</p>
 </section>
-
-<style>
-	.projects-page {
-		display: grid;
-		gap: 1rem;
-		--top-nav-offset: clamp(5.8rem, 9vw, 7.2rem);
-	}
-
-	.projects-header p {
-		max-width: 56ch;
-	}
-
-	.projects-header {
-		scroll-snap-align: start;
-		scroll-margin-top: var(--top-nav-offset);
-	}
-
-	.vertical-carousel {
-		display: grid;
-		gap: 3.5rem;
-		padding-bottom: 2rem;
-	}
-
-	.project-slide {
-		scroll-snap-align: start;
-		scroll-snap-stop: always;
-		scroll-margin-top: var(--top-nav-offset);
-		min-height: clamp(520px, calc(100vh - var(--top-nav-offset) - 1.5rem), 820px);
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		gap: 0.85rem;
-		padding: 0.9rem;
-		border: none;
-		border-radius: 0.8rem;
-		background: transparent;
-	}
-
-	.slide-copy {
-		display: grid;
-		align-content: start;
-		gap: 0.6rem;
-		padding: 0.2rem;
-	}
-
-	.slide-index {
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 0.73rem;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		color: var(--muted);
-		margin: 0;
-	}
-
-	.slide-copy h2 {
-		margin: 0;
-		font-size: clamp(1.4rem, 3vw, 2rem);
-	}
-
-	.slide-copy > p {
-		margin: 0;
-	}
-
-	.slide-copy :global(.button) {
-		width: fit-content;
-		margin-top: 0.2rem;
-	}
-
-	.slide-media {
-		min-height: 100%;
-		display: flex;
-		align-items: center;
-	}
-
-	.slide-media img,
-	.media-placeholder {
-		width: 100%;
-		height: 100%;
-		min-height: 240px;
-		border-radius: 0.7rem;
-	}
-
-	.slide-media img {
-		object-fit: cover;
-		max-height: clamp(260px, 45vh, 420px);
-	}
-
-	.media-placeholder {
-		display: grid;
-		align-content: center;
-		justify-items: center;
-		gap: 0.3rem;
-		padding: 0.9rem;
-		background: color-mix(in srgb, var(--card) 88%, var(--bg-accent));
-		border: none;
-	}
-
-	.placeholder-kicker {
-		margin: 0;
-		font-family: 'IBM Plex Mono', monospace;
-		font-size: 0.72rem;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		color: var(--muted);
-	}
-
-	.media-placeholder p {
-		margin: 0;
-		color: var(--muted);
-		font-size: 0.85rem;
-	}
-
-	@media (max-width: 820px) {
-		.vertical-carousel {
-			gap: 1.5rem;
-		}
-
-		.project-slide {
-			min-height: auto;
-			grid-template-columns: 1fr;
-		}
-	}
-</style>

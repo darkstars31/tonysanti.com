@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { resolve } from '$app/paths';
+	import Menu from '@lucide/svelte/icons/menu';
 	import Moon from '@lucide/svelte/icons/moon';
 	import Sun from '@lucide/svelte/icons/sun';
+	import X from '@lucide/svelte/icons/x';
 	import './layout.css';
 	import faceProfile from '$lib/assets/faceprofile.png';
 	import favicon from '$lib/assets/favicon.svg';
@@ -25,6 +27,7 @@
 
 	let { children } = $props();
 	let theme = $state<Theme>('dark');
+	let mobileMenuOpen = $state(false);
 	const currentYear = new Date().getFullYear();
 	const navItems: NavItem[] = [
 		{ label: 'ABOUT', path: '/about' },
@@ -63,6 +66,22 @@
 		const nextTheme: Theme = theme === 'dark' ? 'light' : 'dark';
 		applyTheme(nextTheme);
 		localStorage.setItem('theme', nextTheme);
+	};
+
+	const toggleMobileMenu = () => {
+		mobileMenuOpen = !mobileMenuOpen;
+	};
+
+	const closeMobileMenu = () => {
+		mobileMenuOpen = false;
+	};
+
+	const openExternalLink = (url: string) => {
+		if (typeof window === 'undefined') {
+			return;
+		}
+
+		window.open(url, '_blank', 'noreferrer');
 	};
 
 	onMount(() => {
@@ -106,18 +125,47 @@
 			<img class="brand-avatar" src={faceProfile} alt="Anthony Santi profile" />
 			<span>Anthony Santi</span>
 		</a>
-		<div class="header-actions">
+		<div class="mobile-header-controls md:hidden!">
+			<button
+				class="theme-toggle"
+				type="button"
+				onclick={toggleTheme}
+				aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+				title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+			>
+				{#if theme === 'dark'}
+					<Moon size={16} strokeWidth={2} aria-hidden="true" />
+				{:else}
+					<Sun size={16} strokeWidth={2} aria-hidden="true" />
+				{/if}
+			</button>
+			<button
+				class="mobile-menu-toggle"
+				type="button"
+				onclick={toggleMobileMenu}
+				aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+				aria-expanded={mobileMenuOpen}
+				aria-controls="mobile-primary-nav"
+			>
+				{#if mobileMenuOpen}
+					<X size={18} strokeWidth={2.1} aria-hidden="true" />
+				{:else}
+					<Menu size={18} strokeWidth={2.1} aria-hidden="true" />
+				{/if}
+			</button>
+		</div>
+		<div class="header-actions hidden! md:flex!">
 			<nav aria-label="Primary" class="site-nav">
 				{#each navItems as item, index (item.label)}
 					{#if item.external}
-						<a
-							href={item.href}
-							target={item.target}
-							rel={item.rel}
+						<button
+							type="button"
+							class="nav-link-button"
+							onclick={() => openExternalLink(item.href)}
 							style={`--nav-enter-delay: ${index * 300}ms`}
 						>
 							{item.label}
-						</a>
+						</button>
 					{:else}
 						<a href={resolve(item.path)} style={`--nav-enter-delay: ${index * 300}ms`}>
 							{item.label}
@@ -138,6 +186,28 @@
 					<Sun size={16} strokeWidth={2} aria-hidden="true" />
 				{/if}
 			</button>
+		</div>
+		<div class={`mobile-nav md:hidden! ${mobileMenuOpen ? 'is-open' : ''}`} id="mobile-primary-nav">
+			<div class="mobile-nav-inner">
+				<nav aria-label="Mobile primary" class="mobile-site-nav">
+					{#each navItems as item (item.label)}
+						{#if item.external}
+							<button
+								type="button"
+								class="mobile-nav-link-button"
+								onclick={() => {
+									closeMobileMenu();
+									openExternalLink(item.href);
+								}}
+							>
+								{item.label}
+							</button>
+						{:else}
+							<a href={resolve(item.path)} onclick={closeMobileMenu}>{item.label}</a>
+						{/if}
+					{/each}
+				</nav>
+			</div>
 		</div>
 	</header>
 

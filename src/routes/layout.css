@@ -181,6 +181,98 @@ body {
 	justify-content: flex-end;
 }
 
+.mobile-header-controls {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-left: auto;
+}
+
+.mobile-menu-toggle {
+	width: 2.2rem;
+	height: 2.2rem;
+	padding: 0;
+	border-radius: 999px;
+	border: 1px solid var(--line);
+	background: var(--card);
+	color: var(--text);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle[aria-expanded='true'] {
+	border-color: var(--highlight);
+	color: var(--highlight);
+}
+
+.mobile-menu-toggle :global(svg) {
+	display: block;
+}
+
+.mobile-nav {
+	width: 100%;
+	display: grid;
+	grid-template-rows: 0fr;
+	opacity: 0;
+	transform: translateY(-0.35rem);
+	pointer-events: none;
+	transition:
+		grid-template-rows 260ms ease,
+		opacity 210ms ease,
+		transform 260ms ease;
+}
+
+.mobile-nav.is-open {
+	grid-template-rows: 1fr;
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+.mobile-nav-inner {
+	overflow: hidden;
+}
+
+.mobile-site-nav {
+	display: grid;
+	gap: 0.45rem;
+	padding-top: 0.55rem;
+}
+
+.mobile-site-nav a,
+.mobile-site-nav .mobile-nav-link-button {
+	text-decoration: none;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.84rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--text);
+	padding: 0.45rem 0;
+	border-top: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+}
+
+.mobile-site-nav .mobile-nav-link-button {
+	background: transparent;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+	text-align: left;
+	cursor: pointer;
+}
+
+.mobile-site-nav a:first-child,
+.mobile-site-nav .mobile-nav-link-button:first-child {
+	border-top: none;
+}
+
+.mobile-site-nav a:hover,
+.mobile-site-nav .mobile-nav-link-button:hover {
+	color: var(--primary);
+}
+
 .site-nav {
 	display: flex;
 	flex-wrap: wrap;
@@ -189,7 +281,8 @@ body {
 }
 
 
-.site-nav a {
+.site-nav a,
+.site-nav .nav-link-button {
 	color: var(--text);
 	text-decoration: none;
 	font-weight: 600;
@@ -202,6 +295,16 @@ body {
 	animation: nav-pop 300ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 	animation-delay: var(--nav-enter-delay, 0ms);
 	transition: border-color 0.25s cubic-bezier(0.4,0,0.2,1), color 0.18s;
+}
+
+.site-nav .nav-link-button {
+	font-family: inherit;
+	line-height: inherit;
+	background: transparent;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	cursor: pointer;
 }
 
 @keyframes nav-pop {
@@ -218,7 +321,9 @@ body {
 
 /* Animated borders: top, left, right using pseudo-elements */
 .site-nav a::before,
-.site-nav a::after {
+.site-nav a::after,
+.site-nav .nav-link-button::before,
+.site-nav .nav-link-button::after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -233,10 +338,12 @@ body {
 		 opacity 0.18s 0.18s,
 		 transform 0.28s cubic-bezier(0.4,0,0.2,1) 0.18s;
 }
-.site-nav a::before {
+.site-nav a::before,
+.site-nav .nav-link-button::before {
 	top: 0;
 }
-.site-nav a::after {
+.site-nav a::after,
+.site-nav .nav-link-button::after {
        top: 0;
        left: 0;
        width: 2px;
@@ -250,35 +357,46 @@ body {
 	       opacity 0.18s 0.32s,
 	       transform 0.28s cubic-bezier(0.4,0,0.2,1) 0.32s;
 }
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav .nav-link-button:hover {
 	color: var(--primary);
 	border-bottom: 2px solid var(--primary);
 }
-.site-nav a:hover::before {
+.site-nav a:hover::before,
+.site-nav .nav-link-button:hover::before {
 	opacity: 1;
 	transform: scaleX(1);
 	transition-delay: 0.18s, 0.18s;
 }
-.site-nav a:hover::after {
+.site-nav a:hover::after,
+.site-nav .nav-link-button:hover::after {
 	opacity: 1;
 	transform: scaleY(1);
 	transition-delay: 0.32s, 0.32s;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav .nav-link-button:hover {
 	color: var(--primary);
 	border-bottom: 2px solid var(--primary);
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.site-nav a {
+	.site-nav a,
+	.site-nav .nav-link-button {
 		opacity: 1;
 		transform: none;
 		animation: none;
 	}
 
 	.site-nav a::before,
-	.site-nav a::after {
+	.site-nav a::after,
+	.site-nav .nav-link-button::before,
+	.site-nav .nav-link-button::after {
+		transition: none;
+	}
+
+	.mobile-nav {
 		transition: none;
 	}
 }
@@ -622,8 +740,10 @@ h2 {
 
 @media (max-width: 700px) {
 	.site-header {
-		align-items: flex-start;
-		flex-direction: column;
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 
 	.header-actions {

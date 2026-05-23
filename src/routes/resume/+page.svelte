@@ -1,12 +1,55 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+
+	const resumeDocId = '1aFArVVI2q56f_wfbotfhuxWqTtM0LjeOmTIXRTL4msM';
+	const resumeDriveUrl = `https://docs.google.com/document/d/${resumeDocId}/edit?usp=sharing`;
+	const resumePdfUrl = `https://docs.google.com/document/d/${resumeDocId}/export?format=pdf`;
 </script>
 
 <section class="content-page resume-page">
-	<h1>Resume</h1>
+	<div class="mb-3 flex items-center justify-between gap-3">
+		<h1 class="m-0">Resume</h1>
+		<div class="flex items-center gap-2">
+			<a
+				class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-(--line) bg-(--card) text-(--text) transition-colors hover:border-(--highlight)"
+				href={resumeDriveUrl}
+				target="_blank"
+				rel="noreferrer"
+				title="Open Resume in Google Drive"
+				aria-label="Open Resume in Google Drive"
+			>
+				<svg
+					viewBox="0 0 87.3 78"
+					aria-hidden="true"
+					class="h-4 w-4"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path d="M6.6 65.4 0 54 18.7 21.6h13.2L6.6 65.4Z" fill="#0F9D58" />
+					<path d="M80.7 78H43.3l-6.6-11.4h44.1L87.3 78h-6.6Z" fill="#4285F4" />
+					<path d="m49.9 0 37.4 64.8H74.1L36.7 0h13.2Z" fill="#F4B400" />
+				</svg>
+			</a>
+			<a
+				class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-(--line) bg-(--card) text-(--text) transition-colors hover:border-(--highlight)"
+				href={resumePdfUrl}
+				target="_blank"
+				rel="noreferrer"
+				download="Anthony-Santi-Resume.pdf"
+				title="Download Resume PDF"
+				aria-label="Download Resume PDF"
+			>
+				<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg">
+					<path d="M12 3V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					<path d="M8.5 10.5L12 14L15.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M4 17.5H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+			</a>
+		</div>
+	</div>
 
 	<div class="resume-header">
-		<p class="resume-name">Anthony Michael Santi</p>
+		<p class="resume-name">Anthony M Santi</p>
 		<p class="resume-contact">
 			<a href="mailto:TonyMSanti@gmail.com">TonyMSanti@gmail.com</a>
 			•

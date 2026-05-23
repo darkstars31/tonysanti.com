@@ -18,7 +18,7 @@
 		</p>
 
 		<div class="cta-row">
-			<a class="button" href={resolve('/resume')}>View Résumé</a>
+			<a class="button" href={resolve('/resume')}>View Resume</a>
 			<a class="button button-ghost" href={resolve('/about')}>Read About Me</a>
 			<a class="button button-ghost" href={resolve('/projects')}>View Projects</a>
 			<a class="button button-ghost" href="https://github.com/darkstars31" target="_blank" rel="noreferrer">

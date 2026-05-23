@@ -32,7 +32,7 @@
 	const navItems: NavItem[] = [
 		{ label: 'ABOUT', path: '/about' },
 		{ label: 'WORKS', path: '/works' },
-		{ label: 'RÉSUMÉ', path: '/resume' },
+		{ label: 'RESUME', path: '/resume' },
 		{
 			label: 'GITHUB',
 			href: 'https://github.com/darkstars31',

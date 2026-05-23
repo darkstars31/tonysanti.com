@@ -239,7 +239,7 @@
 				<div class="flex min-h-full items-center" aria-hidden={project.image ? undefined : 'true'}>
 					{#if project.image}
 						<img
-							class="h-full min-h-60 w-full rounded-[0.7rem] object-cover overflow-visible max-h-[calc(60%-0.4rem)]"
+							class={`h-full min-h-60 w-full rounded-[0.7rem] object-cover overflow-visible max-h-[calc(50%-0.4rem)] ${project.imageStyle ?? ''}`}
 							src={project.image}
 							alt={project.imageAlt ?? `${project.title} image`}
 						/>

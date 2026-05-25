@@ -11,17 +11,37 @@
 		<h1 class="mb-4 max-w-[16ch] text-[clamp(2rem,6vw,3.8rem)] leading-[1.08] max-[700px]:max-w-none">
 			Anthony M Santi
 		</h1>
-		<p class="lead">
+		<p class="mb-[1.8rem] max-w-[62ch] text-[1rem] text-(--muted)">
 			Senior Full-Stack Software Engineer and Team Lead focused on shipping scalable products,
 			mentoring teams, and delivering measurable business impact across web, mobile, and backend
 			systems.
 		</p>
 
-		<div class="cta-row">
-			<a class="button" href={resolve('/resume')}>View Resume</a>
-			<a class="button button-ghost" href={resolve('/about')}>Read About Me</a>
-			<a class="button button-ghost" href={resolve('/projects')}>View Projects</a>
-			<a class="button button-ghost" href="https://github.com/darkstars31" target="_blank" rel="noreferrer">
+		<div class="flex flex-wrap gap-[0.8rem]">
+			<a
+				class="inline-flex items-center justify-center rounded-[0.6rem] border border-transparent bg-(--primary) px-4 py-[0.7rem] font-bold text-(--primary-ink) no-underline"
+				href={resolve('/resume')}
+			>
+				View Resume
+			</a>
+			<a
+				class="inline-flex items-center justify-center rounded-[0.6rem] border border-(--line) bg-transparent px-4 py-[0.7rem] font-bold text-(--text) no-underline"
+				href={resolve('/about')}
+			>
+				Read About Me
+			</a>
+			<a
+				class="inline-flex items-center justify-center rounded-[0.6rem] border border-(--line) bg-transparent px-4 py-[0.7rem] font-bold text-(--text) no-underline"
+				href={resolve('/projects')}
+			>
+				View Projects
+			</a>
+			<a
+				class="inline-flex items-center justify-center rounded-[0.6rem] border border-(--line) bg-transparent px-4 py-[0.7rem] font-bold text-(--text) no-underline"
+				href="https://github.com/darkstars31"
+				target="_blank"
+				rel="noreferrer"
+			>
 				GitHub
 			</a>
 		</div>

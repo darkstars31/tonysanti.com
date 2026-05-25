@@ -6,9 +6,9 @@
 	const resumePdfUrl = `https://docs.google.com/document/d/${resumeDocId}/export?format=pdf`;
 </script>
 
-<section class="content-page resume-page">
+<section class="resume-page">
 	<div class="mb-3 flex items-center justify-between gap-3">
-		<h1 class="m-0">Resume</h1>
+		<h1 class="m-0 max-w-[16ch] text-[clamp(2rem,6vw,3.8rem)] leading-[1.08]">Resume</h1>
 		<div class="flex items-center gap-2">
 			<a
 				class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-(--line) bg-(--card) text-(--text) transition-colors hover:border-(--highlight)"
@@ -261,3 +261,140 @@
 		</a>
 	</div>
 </section>
+
+<style>
+	.resume-page {
+		line-height: 1.8;
+	}
+
+	.resume-header {
+		margin-bottom: 1.8rem;
+	}
+
+	.resume-name {
+		font-size: 1.2rem;
+		font-weight: 800;
+		margin-bottom: 0.3rem;
+	}
+
+	.resume-contact {
+		line-height: 1.9;
+		color: var(--muted);
+	}
+
+	.resume-contact a {
+		color: var(--text);
+		font-weight: 600;
+	}
+
+	.resume-summary {
+		margin-top: 0.8rem;
+		max-width: 78ch;
+		line-height: 1.85;
+		font-size: 0.95rem;
+		color: var(--muted);
+	}
+
+	.resume-section-title {
+		margin-top: 2.3rem;
+		margin-bottom: 0.85rem;
+		font-size: clamp(1.25rem, 3.2vw, 1.85rem);
+	}
+
+	.project-card {
+		padding: 1rem;
+		border: 1px solid var(--line);
+		border-radius: 0.75rem;
+		background: var(--card);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.project-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 4px 10px rgb(0 0 0 / 0.2);
+	}
+
+	.project-card h2 {
+		margin-top: 0.2rem;
+		font-size: 1.2rem;
+	}
+
+	.resume-entry {
+		margin-bottom: 1rem;
+		padding: 1.2rem;
+	}
+
+	.resume-meta {
+		margin-top: 0.2rem;
+		margin-bottom: 0.85rem;
+		color: var(--muted);
+		line-height: 1.75;
+	}
+
+	.resume-entry ul {
+		margin-top: 0.2rem;
+		margin-bottom: 0.2rem;
+		padding-left: 1.35rem;
+		line-height: 1.85;
+	}
+
+	.resume-entry li {
+		font-size: 0.92rem;
+		margin-bottom: 0.45rem;
+	}
+
+	.resume-skill-groups {
+		margin-top: 0.55rem;
+		padding: 1rem 1.1rem;
+		border: 1px solid var(--line);
+		border-radius: 0.75rem;
+		background: var(--card);
+	}
+
+	.resume-skill-line {
+		margin: 0 0 0.5rem;
+		font-size: 0.92rem;
+		line-height: 1.75;
+	}
+
+	.resume-skill-line:last-child {
+		margin-bottom: 0;
+	}
+
+	.resume-links {
+		margin-top: 1.4rem;
+	}
+
+	.link-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+		gap: 0.8rem;
+	}
+
+	.tile-link {
+		display: block;
+		padding: 1rem;
+		border-radius: 0.75rem;
+		border: 1px solid var(--line);
+		background: var(--card);
+		text-decoration: none;
+		color: inherit;
+		transition: transform 130ms ease, border-color 130ms ease;
+	}
+
+	.tile-link strong {
+		display: block;
+		font-size: 1rem;
+		margin-bottom: 0.3rem;
+	}
+
+	.tile-link span {
+		color: var(--muted);
+		font-size: 0.88rem;
+	}
+
+	.tile-link:hover {
+		transform: translateY(-2px);
+		border-color: var(--highlight);
+	}
+</style>

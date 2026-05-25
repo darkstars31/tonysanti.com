@@ -209,11 +209,11 @@
 	});
 </script>
 
-<section class="content-page grid gap-4" style="--top-nav-offset: clamp(5.8rem, 9vw, 7.2rem)">
+<section class="grid gap-4" style="--top-nav-offset: clamp(5.8rem, 9vw, 7.2rem)">
 	<div class="grid gap-14 pb-8 max-[820px]:gap-6" aria-label="Projects vertical carousel">
 		{#each projects as project, index (project.title)}
 			<article
-				class="snap-start snap-always scroll-mt-(--top-nav-offset) grid min-h-[clamp(520px,calc(100vh-var(--top-nav-offset)-1.5rem),820px)] grid-cols-2 gap-[0.85rem] rounded-[0.8rem] bg-transparent p-[0.9rem] max-[820px]:min-h-auto max-[820px]:grid-cols-1"
+				class="project-slide snap-start snap-always scroll-mt-(--top-nav-offset) grid min-h-[clamp(520px,calc(100vh-var(--top-nav-offset)-1.5rem),820px)] grid-cols-2 gap-[0.85rem] rounded-[0.8rem] bg-transparent p-[0.9rem] max-[820px]:min-h-auto max-[820px]:grid-cols-1"
 				aria-label={`Project ${index + 1}: ${project.title}`}
 			>
 				<div class="grid content-start gap-[0.6rem] p-[0.2rem]">
@@ -222,12 +222,12 @@
 					</p>
 					<h2 class="m-0 text-[clamp(1.4rem,3vw,2rem)]">{project.title}</h2>
 					<p class="m-0">{project.description}</p>
-					<p class="stack">{project.stack}</p>
+					<p class="mt-[0.9rem] font-['IBM_Plex_Mono',monospace] text-[0.8rem] text-(--muted)">{project.stack}</p>
 					{#if project.cta}
 						{#each project.cta as cta (cta.url)}
 							<button
 								type="button"
-								class="button button-ghost mt-[0.2rem] w-fit"
+								class="mt-[0.2rem] inline-flex w-fit items-center justify-center rounded-[0.6rem] border border-(--line) bg-transparent px-4 py-[0.7rem] font-bold text-(--text)"
 								onclick={() => openProject(cta.url)}
 							>
 								{cta.label}
@@ -257,7 +257,7 @@
 		<div class="snap-start" aria-hidden="true"></div>
 	</div>
 
-	<p class="project-note mt-4">
+	<p class="mt-4 max-w-[72ch] text-[0.95rem]">
 		More code samples and active repositories are available on
 		<a class="font-bold text-(--primary)" href="https://github.com/darkstars31" target="_blank" rel="noreferrer">
 			GitHub
